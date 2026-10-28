@@ -1,4 +1,4 @@
-![CD'sFUSION Team Banner](https://i.ibb.co/K0ZSt89/XaviaFCB.png)
+![CD'sFUSION Team Banner]
 
 # CD'sFUSION Team
 
