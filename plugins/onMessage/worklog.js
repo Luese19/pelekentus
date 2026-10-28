@@ -1,3 +1,5 @@
+import moment from "moment-timezone";
+
 const PHOTO_CAPTIONS = new Map([
     ["xin", "in"],
     ["xout", "out"],
@@ -38,7 +40,9 @@ export default async function ({ message }) {
               });
 
         if (action === "in") {
-            await message.reply(`✅ Clock-in recorded at ${new Date(log.inAt).toLocaleString()}.`);
+            const timezone = global.config.timezone || "UTC";
+            const clockInTime = moment(log.inAt).tz(timezone).format("h:mm:ss A");
+            await message.reply(`✅ Clock-in recorded at ${clockInTime}.`);
         } else {
             await message.reply(
                 `✅ Clock-out recorded.\nWorked: ${global.worklogs.formatMinutes(log.totalMinutes)}\n` +
