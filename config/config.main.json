@@ -1,29 +1,25 @@
 {
-    "APPSTATE_PATH": "./appstate.json",
-    "APPSTATE_PROTECTION": true,
+    "PLATFORM": "Telegram",
     "AUTO_PING_SERVER": true,
     "ALLOW_INBOX": false,
     "DATABASE": "JSON",
     "DATABASE_JSON_BEAUTIFY": true,
-    "FCA_OPTIONS": {
-        "pauseLog": true,
-        "logLevel": "silent",
-        "selfListen": false,
-        "listenEvents": true,
-        "forceLogin": true,
-        "userAgent": "Mozilla/5.0 (Linux; Android 9; SM-G973U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
-    },
     "LANGUAGE": "en_US",
-    "LOG_LEVEL": 1,
+    "LOG_LEVEL": "info",
     "MODERATORS": [
-        "100008907121641"
+        "1004376514806"
     ],
     "ABSOLUTES": [
-        "100008907121641"
+        ""
     ],
-    "NAME": "Xavia",
-    "PREFIX": "x",
+    "NAME": "CD'sFUSION Team",
+    "PREFIX": "/",
     "timezone": "Asia/Ho_Chi_Minh",
     "REFRESH": "43200000",
-    "MAX_BALANCE_LIMIT": "-1"
+    "MAX_BALANCE_LIMIT": "-1",
+    "WORK_SHIFT_START": "08:00",
+    "WORK_SHIFT_END": "17:00",
+    "WORK_BREAK_MINUTES": 60,
+    "WORK_OVERTIME_MULTIPLIER": 1.5,
+    "WORK_CURRENCY": "PHP"
 }

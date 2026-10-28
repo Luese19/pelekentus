@@ -1,7 +1,7 @@
-# XAVIABOT DOCS (v2)
+# CD'sFUSION TEAM BOT DOCS (v2)
 ## UPDATED - 2023/11/14
 
-### NEW XAVIABOT COMMANDS SNIPPET: [here](https://marketplace.visualstudio.com/items?itemName=XaviaTeam.xaviabot-snippets)
+### NEW CD'sFUSION TEAM BOT COMMANDS SNIPPET: [here](https://marketplace.visualstudio.com/items?itemName=XaviaTeam.xaviabot-snippets)
 
 ### INSTALLATION && REQUIREMENTS: [here](https://github.com/XaviaTeam/XaviaBot/blob/main/README.md)
 <hr />
@@ -114,6 +114,41 @@ await Threads.updateData(threadID, { banned: threadData.banned });
 <hr />
 
 ### Command Plugin
+
+### Telegram adapter
+
+The Telegram bot is started with `npm start` and requires
+`TELEGRAM_BOT_TOKEN`. It normalizes Telegram messages into the plugin message
+contract and supports commands, replies, database access, language, work logs,
+and Telegram group administrators.
+
+#### Work-hours logging
+
+In Telegram groups, a photo captioned `In` opens one work session and a photo
+captioned `Out` closes it. Each employee may have one active session. Use
+`/work today`, `/work week`, and `/work export week` for personal reports and
+CSV export. Employees must first set a profile:
+
+```text
+/profile set Name|Department|Position|direct|hour|800
+/profile view
+```
+
+Only moderators can change another employee's rate:
+
+```text
+/profile rate USER_ID hour 900
+/work employee USER_ID week
+```
+
+Hourly and daily rates receive the configured overtime multiplier
+(`WORK_OVERTIME_MULTIPLIER`, default `1.5`). Fixed-session rates do not receive
+an overtime uplift. Configure the currency with `WORK_CURRENCY`.
+
+In Telegram, `/menu` or `/start` displays a persistent button menu for work
+reports, profiles, help, and photo-based clock-in/out guidance. Telegram bots
+cannot open the user's camera automatically; send a photo with the caption
+`In` or `Out` after choosing the related button.
 
 - Check example plugin: [example](https://github.com/XaviaTeam/XaviaBot/blob/main/plugins/commands/example)
 

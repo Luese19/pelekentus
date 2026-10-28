@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: cdsfusion-telegram-test
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: false
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_WEBHOOK_URL
+        sync: false
+      - key: NODE_VERSION
+        value: "20.18.1"

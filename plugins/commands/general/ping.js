@@ -1,7 +1,4 @@
 export default function ({ message }) {
-    let timeStart = Date.now();
-    message.send('').catch(_ => {
-        let timeEnd = Date.now();
-        message.reply(`Pong! ${timeEnd - timeStart}ms`);
-    })
+    const timeStart = Date.now();
+    return message.reply(`Pong! ${Date.now() - timeStart}ms`);
 }

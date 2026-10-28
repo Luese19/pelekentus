@@ -1,7 +1,7 @@
 const config = {
     name: "uptime",
     aliases: ["upt"],
-    credits: "XaviaTeam"
+    credits: "CD'sFusion Team"
 }
 
 function onCall({ message }) {

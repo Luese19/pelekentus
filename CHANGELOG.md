@@ -2,6 +2,12 @@
 ## version - yyyy/mm/dd
  -->
 
+## 2.4.3 - 2026/10/26
+
+- Added a Telegram bot adapter using the Bot API.
+- Added Telegram-compatible message, user, thread, reply, and reaction handling while preserving the Facebook runtime.
+- Added photo-based `In`/`Out` work-hour logging with overtime calculations and CSV export.
+
 ## 2.3.0-beta.2 2023/11/21
 
 -   Refactor code

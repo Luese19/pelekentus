@@ -5,7 +5,7 @@ const config = {
     aliases: ["avt", "profileImage"],
     description: "Get profile image of a user",
     usage: "<reply/tag/none>",
-    credits: "XaviaTeam"
+    credits: "CD'sFusion Team"
 }
 
 const langData = {

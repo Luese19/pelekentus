@@ -1,5 +1,5 @@
 const config = {
-    credits: "XaviaTeam"
+    credits: "CD'sFusion Team"
 }
 
 function onCall({ message }) {

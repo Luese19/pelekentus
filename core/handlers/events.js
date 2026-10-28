@@ -260,7 +260,7 @@ async function handleCommand(event, xDatabase) {
                         );
                     }
                 } else {
-                    api.setMessageReaction("🕓", messageID, null, true);
+                    api.setMessageReaction("👍", messageID, null, true);
                 }
             } else {
                 // Do something when user don't have enough permissions

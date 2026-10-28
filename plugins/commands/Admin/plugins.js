@@ -7,7 +7,7 @@ const config = {
     description: "Manage plugins",
     usage: "[reload]/[list]/[install]",
     permissions: [2],
-    credits: "XaviaTeam",
+    credits: "CD'sFusion Team",
 };
 
 const langData = {

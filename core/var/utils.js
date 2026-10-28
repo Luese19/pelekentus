@@ -1,9 +1,16 @@
 import fs from "fs";
 import axios from "axios";
-import canvas from "canvas";
 import FormData from "form-data";
 import { randomInt } from "crypto";
 import { join } from "path";
+import { createRequire } from "module";
+
+let canvas = null;
+try {
+    canvas = createRequire(import.meta.url)("canvas");
+} catch {
+    // Canvas is optional for runtimes that do not use image generation.
+}
 
 export function request(url, options = {}, callback = null) {
     if (typeof options === "function") {
@@ -193,6 +200,7 @@ export function random(min, max) {
  * Circle an image
  */
 export function circle(image, x, y, radius) {
+    if (!canvas) throw new Error("The optional canvas dependency is required for image generation");
     const tempCanvas = new canvas.createCanvas(image.width, image.height);
     const ctx = tempCanvas.getContext("2d");
     ctx.beginPath();
@@ -342,6 +350,7 @@ export function levelToExp(level) {
 }
 
 export function getAvatarURL(uid) {
+    if (global.api?.getAvatarURL) return global.api.getAvatarURL(uid);
     return `https://graph.facebook.com/${uid}/picture?type=large&width=500&height=500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
 }
 

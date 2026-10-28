@@ -23,7 +23,7 @@ import { Assets } from "./handlers/assets.js";
 
 import crypto from "crypto";
 
-process.stdout.write(String.fromCharCode(27) + "]0;" + "Xavia" + String.fromCharCode(7));
+process.stdout.write(String.fromCharCode(27) + "]0;" + "CD'sFUSION Team" + String.fromCharCode(7));
 
 process.on("unhandledRejection", (reason, p) => {
     console.error(reason, "Unhandled Rejection at Promise", p);

@@ -1,9 +1,9 @@
-![XaviaBanner](https://i.ibb.co/K0ZSt89/XaviaFCB.png)
+![CD'sFUSION Team Banner](https://i.ibb.co/K0ZSt89/XaviaFCB.png)
 
-# Xavia
+# CD'sFUSION Team
 
-• A Facebook Chat Bot made by XaviaTeam<br />
-• This Project will turn your Facebook account into a **_Facebook Chat Bot_** with a lot of Features
+CD'sFUSION Team is a Telegram bot built for IT and Audio-Visual operations.
+It uses the official Telegram Bot API and requires only a Telegram bot token.
 
 ![illustration](https://i.ibb.co/5MCXJkX/309961956-852941662506289-2438726751602905775-n.png)
 
@@ -15,7 +15,7 @@
 
 ## Installation
 
-• [Install Xavia on Replit](https://www.youtube.com/watch?v=WUva_shyMqM)
+• [Install CD'sFUSION Team bot on Replit](https://www.youtube.com/watch?v=WUva_shyMqM)
 
 • Import to [Replit](https://replit.com/github/XaviaTeam/XaviaBot) / [Glitch](https://glitch.com/edit/#!/import/github/XaviaTeam/XaviaBot)
 
@@ -33,17 +33,68 @@ git clone https://github.com/XaviaTeam/XaviaBot.git
 cd xavia
 ```
 
-• Use [c3c-fbstate](https://github.com/c3cbot/c3c-fbstate) to get the appstate from your Facebook account then paste it on appstate.json
-
-• Install dependencies & Run
+• Install dependencies and run the Telegram bot
 
 ```bash
-npm install && npm start
+npm install
+npm start
 ```
+
+1. Create a bot with [@BotFather](https://t.me/BotFather) and copy its token.
+2. Copy `.env.example` to `.env`, then set `TELEGRAM_BOT_TOKEN` in `.env`.
+3. Start the Telegram runtime:
+
+```bash
+npm run start
+```
+
+The bot uses long polling by default. To use a webhook, set
+`TELEGRAM_WEBHOOK_URL`; the bot token must still be provided. Commands keep the
+configured `/` prefix and group permissions are mapped to Telegram
+administrators.
+
+#### Render test deployment
+
+The repository includes a Render Blueprint in `render.yaml` for a separate
+Telegram background worker named `cdsfusion-telegram-test`. Create a test Git
+branch, push it to the repository, then create a Render Blueprint from that
+branch. Set `TELEGRAM_BOT_TOKEN` as a secret environment variable in Render.
+Keep only one bot instance running for a token; do not run the same token
+locally while the Render worker is active.
+
+#### Work-hours logging
+
+In a work group, send a photo with the exact caption `In` to clock in and
+another photo captioned `Out` to clock out. The bot calculates total, regular,
+and overtime hours using `WORK_SHIFT_START`, `WORK_SHIFT_END`,
+`WORK_BREAK_MINUTES`, and `timezone` from `config/config.main.json`.
+
+Before clocking in, create your employee profile:
+
+```text
+/profile set John|IT|Technician|direct|hour|800
+/profile view
+```
+
+Allowed employment types are `direct`, `agency`, and `oncall`. Allowed rate
+units are `hour`, `day`, and `fixed`. Employees can edit their own profile,
+but only IDs listed in `MODERATORS` can change rates:
+
+```text
+/profile rate USER_ID hour 900
+```
+
+Use `/work today`, `/work week`, or `/work export week` to view or export your
+own records. Work logs are stored in `core/var/data/worklogs.json`.
+
+In Telegram, send `/menu` or `/start` to display the persistent button menu.
+Telegram does not allow bots to open the camera automatically from a button.
+Use the clock-in/out buttons for instructions, then send a photo with the
+caption `In` or `Out`.
 
 ## Documentations
 
-• See: [XaviaBot Documentation](https://github.com/XaviaTeam/XaviaBot/blob/main/DOCS.md)
+• See: [CD'sFUSION Team bot documentation](https://github.com/XaviaTeam/XaviaBot/blob/main/DOCS.md)
 
 ## Contributing
 
@@ -65,7 +116,7 @@ npm install && npm start
 [Github](https://github.com/truong9c2208) -
 [Facebook](https://www.facebook.com/shibasama.dev)
 <br /><br />
-• Many thanks to TesterTeam for all the testing, feedbacks and the other Bot Projects ([c3cbot](https://github.com/c3cbot/legacy-c3cbot) - [miraibot](https://github.com/miraiPr0ject/miraiv2) - [kb2abot](https://github.com/kb2ateam/kb2abot-client)) that inspired me to create XaviaBot
+• Many thanks to TesterTeam for all the testing, feedbacks and the other Bot Projects ([c3cbot](https://github.com/c3cbot/legacy-c3cbot) - [miraibot](https://github.com/miraiPr0ject/miraiv2) - [kb2abot](https://github.com/kb2ateam/kb2abot-client)) that inspired me to create this bot
 
 ## Translators
 

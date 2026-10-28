@@ -11,6 +11,7 @@ const langData = {
 }
 
 const onLoad = () => {
+    if (!global.hasOwnProperty("nino")) global.nino = {};
     if (!global.hasOwnProperty("ninoauto")) global.ninoauto = {};
 }
 
@@ -20,11 +21,11 @@ const onCall = ({ message, getLang, data }) => {
     const { senderID, threadID } = message;
 
     if (senderID == global.botID) return;
-    if (!global.nino.hasOwnProperty(threadID) && !global.nino[threadID]) return;
-    if (message.body.startsWith(`${data?.thread?.data?.prefix || global.config.PREFIX}nino off`)) return;
+    if (!global.nino || !Object.prototype.hasOwnProperty.call(global.nino, threadID)) return;
+    if (String(message.body || "").startsWith(`${data?.thread?.data?.prefix || global.config.PREFIX}nino off`)) return;
 
-    if (!global.ninoauto.hasOwnProperty(message.threadID)) global.ninoauto[threadID] = {};
-    if (!global.ninoauto[threadID].hasOwnProperty(senderID)) global.ninoauto[threadID][senderID] = 0;
+    if (!Object.prototype.hasOwnProperty.call(global.ninoauto, threadID)) global.ninoauto[threadID] = {};
+    if (!Object.prototype.hasOwnProperty.call(global.ninoauto[threadID], senderID)) global.ninoauto[threadID][senderID] = 0;
 
     if (global.ninoauto[threadID][senderID] + _3Sec > Date.now()) return;
     global.ninoauto[threadID][senderID] = Date.now();

@@ -45,7 +45,7 @@ export default async function subscribe({ event }) {
         }
         const PREFIX = getThreadData.prefix || global.config.PREFIX;
         api.changeNickname(
-            `[ ${PREFIX} ] ${global.config.NAME || "Xavia"}`,
+            `[ ${PREFIX} ] ${global.config.NAME || "CD'sFUSION Team"}`,
             threadID,
             botID
         );
