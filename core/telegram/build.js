@@ -12,7 +12,8 @@ import { TelegramApi } from "./api.js";
 import { normalizeTelegramUpdate } from "./normalize.js";
 import { createWorklogStore } from "./worklog.js";
 
-loadEnv({ path: resolve(process.cwd(), ".env"), override: true });
+const envFile = process.env.ENV_FILE || ".env";
+loadEnv({ path: resolve(process.cwd(), envFile), override: true });
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 if (!token) {
@@ -59,9 +60,20 @@ bot.on("message", async (ctx) => {
 
 bot.catch((error) => logger.error(error));
 
-logger.system(`Telegram bot started as ${global.config.NAME || "CD'sFUSION Team"}`);
+logger.system(
+    `Telegram bot started as ${global.config.NAME || "CD'sFUSION Team"} [${
+        process.env.BOT_INSTANCE || "default"
+    }]`
+);
 if (process.env.TELEGRAM_WEBHOOK_URL) {
-    await bot.api.setWebhook(process.env.TELEGRAM_WEBHOOK_URL);
-} else {
-    await bot.start();
+    logger.warn(
+        "TELEGRAM_WEBHOOK_URL is configured, but this Render worker uses polling. " +
+            "Remove TELEGRAM_WEBHOOK_URL from Render to avoid updates being routed to an inactive webhook."
+    );
 }
+
+await bot.api.deleteWebhook({ drop_pending_updates: false });
+logger.system("Telegram webhook cleared; starting long polling");
+await bot.start({
+    onStart: ({ username }) => logger.system(`Telegram polling active for @${username}`),
+});

@@ -9,7 +9,9 @@ services:
     envVars:
       - key: TELEGRAM_BOT_TOKEN
         sync: false
-      - key: TELEGRAM_WEBHOOK_URL
-        sync: false
+      - key: DATA_DIR
+        value: core/var/data
+      - key: BOT_INSTANCE
+        value: production
       - key: NODE_VERSION
         value: "20.18.1"

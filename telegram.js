@@ -2,7 +2,8 @@ import { config as loadEnv } from "dotenv";
 import { resolve } from "path";
 import { createServer } from "http";
 
-loadEnv({ path: resolve(process.cwd(), ".env"), override: true });
+const envFile = process.env.ENV_FILE || ".env";
+loadEnv({ path: resolve(process.cwd(), envFile), override: true });
 
 const port = Number.parseInt(process.env.PORT ?? "", 10);
 if (Number.isInteger(port) && port > 0) {

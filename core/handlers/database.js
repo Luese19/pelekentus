@@ -36,9 +36,9 @@ async function handleDatabase(event) {
 }
 
 export class XDatabase {
-    #dataPath = resolve(process.cwd(), "core", "var", "data");
-    #tPath = resolve(process.cwd(), "core", "var", "data", "t_img");
-    #cachePath = resolvePath(process.cwd(), "core", "var", "data", "cache");
+    #dataPath = resolve(process.cwd(), process.env.DATA_DIR || "core/var/data");
+    #tPath = resolve(this.#dataPath, "t_img");
+    #cachePath = resolve(this.#dataPath, "cache");
 
     #api;
 
@@ -100,38 +100,38 @@ export class XDatabase {
             }, DATABASE_JSON_BEAUTIFY && !isBak ? 4 : 0);
 
         this.#saveFile(
-            resolve(process.cwd(), "core", "var", "data", "threads.bak.json"),
+            resolve(this.#dataPath, "threads.bak.json"),
             formatData(threads, true)
         );
         this.#saveFile(
-            resolve(process.cwd(), "core", "var", "data", "threads.json"),
+            resolve(this.#dataPath, "threads.json"),
             formatData(threads)
         );
-        unlinkSync(resolve(process.cwd(), "core", "var", "data", "threads.bak.json"));
+        unlinkSync(resolve(this.#dataPath, "threads.bak.json"));
         logger.custom(`THREAD DATA UPDATED: ${Date.now() - now}ms`, "JSON-DB");
         now = Date.now();
 
         this.#saveFile(
-            resolve(process.cwd(), "core", "var", "data", "users.bak.json"),
+            resolve(this.#dataPath, "users.bak.json"),
             formatData(users, true)
         );
         this.#saveFile(
-            resolve(process.cwd(), "core", "var", "data", "users.json"),
+            resolve(this.#dataPath, "users.json"),
             formatData(users)
         );
-        unlinkSync(resolve(process.cwd(), "core", "var", "data", "users.bak.json"));
+        unlinkSync(resolve(this.#dataPath, "users.bak.json"));
         logger.custom(`USER DATA UPDATED: ${Date.now() - now}ms`, "JSON-DB");
         now = Date.now();
 
         this.#saveFile(
-            resolve(process.cwd(), "core", "var", "data", "effects.bak.json"),
+            resolve(this.#dataPath, "effects.bak.json"),
             formatData(effects.values(), true)
         );
         this.#saveFile(
-            resolve(process.cwd(), "core", "var", "data", "effects.json"),
+            resolve(this.#dataPath, "effects.json"),
             formatData(effects.values())
         );
-        unlinkSync(resolve(process.cwd(), "core", "var", "data", "effects.bak.json"));
+        unlinkSync(resolve(this.#dataPath, "effects.bak.json"));
         logger.custom(`EFFECT DATA UPDATED: ${Date.now() - now}ms`, "JSON-DB");
         now = Date.now();
 

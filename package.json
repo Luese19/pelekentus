@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node telegram.js",
     "startTelegram": "node telegram.js",
-    "startDev": "node --watch telegram.js"
+    "startDev": "node --watch dev.js"
   },
   "keywords": [
     "telegram",

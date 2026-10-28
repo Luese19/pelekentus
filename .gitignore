@@ -27,11 +27,14 @@ node_modules/
 *.jpg
 *.jpeg
 .env
+.env.development
+.env.*.local
 plugins/cache/*
 !plugins/cache/README.txt
 core/var/data/cache/*
 !core/var/data/cache/README.txt
 core/var/data/*.json
+core/var/data-dev/
 fbstate.json
 *.bak
 !core/var/assets/*

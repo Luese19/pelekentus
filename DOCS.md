@@ -122,6 +122,29 @@ The Telegram bot is started with `npm start` and requires
 contract and supports commands, replies, database access, language, work logs,
 and Telegram group administrators.
 
+#### Production and local development instances
+
+Telegram polling allows only one running consumer for a bot token. The Render
+instance and the local development instance must therefore use different bots
+created through [@BotFather](https://t.me/BotFather).
+
+The Render service is configured as a worker and uses Telegram long polling.
+Leave `TELEGRAM_WEBHOOK_URL` unset; a webhook URL without a webhook HTTP
+handler makes the process appear healthy while Telegram sends updates
+elsewhere.
+
+Keep the Render bot token in Render's environment settings. For local
+development, copy `.env.development.example` to `.env.development` and set the
+development bot token:
+
+```powershell
+Copy-Item .env.development.example .env.development
+npm run startDev
+```
+
+Development defaults to `core/var/data-dev`, so JSON data written while testing
+does not modify the production data directory. Do not commit either env file.
+
 #### Work-hours logging
 
 In Telegram groups, a photo captioned `In` opens one work session and a photo
